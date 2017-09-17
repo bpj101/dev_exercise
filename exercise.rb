@@ -5,12 +5,14 @@ class Exercise
   # If the word being replaced has a capital first letter, it should instead be replaced with "Marklar".
 
   def self.marklar(str)
-    # TODO: Implement this method
+   # Move String to array to isolate the words.
     strArray = str.split(" ")
     i = 0
     punc = ""
+    # Loop through individual words to determine replacement
     loop do
       if (strArray[i].size > 4)
+        # Catch amy puncuations
         if (strArray[i][-1,1].match  /([?!.])/ )
           punc = strArray[i][-1,1]
         end
@@ -23,6 +25,7 @@ class Exercise
       i += 1
       break if i == strArray.size
     end
+    # Return rejoined string with replaced words
     return strArray.join(" ")
   end
 
@@ -33,28 +36,30 @@ class Exercise
   # eg. the Fibonacci sequence up to 6 terms is (1, 1, 2, 3, 5, 8),
   # and the sum of its even numbers is (2 + 8) = 10
   def self.even_fibonacci(nth)
-    # TODO: Implement this method
     i = 0
     fibArray = Array.new
+    # Loop through to create Fib sequence array based on nth terms
     loop do
+      # Add first two terms to array
       if (i < 2)
         fibArray.push(1)
-        # print fibArray
       else
+        # Add remaining terms to array 
         fib = (fibArray[i-2].to_i + fibArray[i-1].to_i )
         fibArray.push(fib)
-        # print fibArray
       end
       i += 1
       break if i == nth
     end
     totFib = 0
+    # Loop through array to get total of even numbers
     for f in fibArray do
       if ( f % 2 == 0)
         # puts f
         totFib += f.to_i   
       end
     end
+    # Return total of even numbers in Fib sequence
     return totFib
   end
 end
